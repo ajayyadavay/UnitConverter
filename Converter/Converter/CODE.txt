@@ -1,0 +1,359 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class converter : Form
+    {
+        int checkmouse;
+        int MvalX;
+        int MvalY;
+        public converter()
+        {
+            InitializeComponent();
+        }
+
+        private void btnexit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnlength_Click(object sender, EventArgs e)
+        {
+            lblcaption.Text = "Conversion for " + btnlength.Text;
+            btntemperature.BackColor = Color.Black;
+            btnarea.BackColor = Color.Black;
+            btnvolume.BackColor = Color.Black;
+            btnlength.BackColor = Color.LightSalmon;
+            comboboxfrom.Items.Clear(); comboboxto.Items.Clear();
+            textBoxfrom.Text = "0"; textBoxto.Text = "0";
+            comboboxfrom.Items.Add("millimeter"); comboboxto.Items.Add("millimeter");
+            comboboxfrom.Items.Add("meter"); comboboxto.Items.Add("meter");
+            comboboxfrom.Items.Add("kilometer"); comboboxto.Items.Add("kilometer");
+            comboboxfrom.Items.Add("centimeter"); comboboxto.Items.Add("centimeter");
+            comboboxfrom.Items.Add("inch"); comboboxto.Items.Add("inch");
+            comboboxfrom.Items.Add("feet"); comboboxto.Items.Add("feet");
+        }
+
+        private void textBoxfrom_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnconvert_Click(object sender, EventArgs e)
+        {
+            if (comboboxfrom.Text == comboboxto.Text)
+            {
+                textBoxto.Text = textBoxfrom.Text;
+            }
+            // conversion for length  meter and kilometer
+            if (comboboxfrom.Text=="meter" && comboboxto.Text=="kilometer")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 1000).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "kilometer" && comboboxto.Text == "meter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) *1000).ToString("0.00000000");
+            }
+            // meter and millimeter
+            if (comboboxfrom.Text == "meter" && comboboxto.Text == "millimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 1000).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "millimeter" && comboboxto.Text == "meter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) /1000).ToString("0.00000000");
+            }
+            // millimeter and kilometer
+            if (comboboxfrom.Text == "millimeter" && comboboxto.Text == "kilometer")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 1000000).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "kilometer" && comboboxto.Text == "millimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 1000000).ToString("0.00000000");
+            }
+            // meter and centimeter
+            if (comboboxfrom.Text == "centimeter" && comboboxto.Text == "meter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 100).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "meter" && comboboxto.Text == "centimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 100).ToString("0.00000000");
+            }
+            // millimeter and centimeter
+            if (comboboxfrom.Text == "centimeter" && comboboxto.Text == "millimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) *10).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "millimeter" && comboboxto.Text == "centimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) /10).ToString("0.00000000");
+            }
+            // millimeter and centimeter
+            if (comboboxfrom.Text == "centimeter" && comboboxto.Text == "kilometer")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) /100000).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "kilometer" && comboboxto.Text == "centimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) *100000).ToString("0.00000000");
+            }
+            // inch and millimeter
+            if (comboboxfrom.Text == "millimeter" && comboboxto.Text == "inch")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 25.4).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "inch" && comboboxto.Text == "millimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 25.4).ToString("0.00000000");
+            }
+            // inch and centimeter
+            if (comboboxfrom.Text == "centimeter" && comboboxto.Text == "inch")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 2.54).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "inch" && comboboxto.Text == "centimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 2.54).ToString("0.00000000");
+            }
+            // inch and kilometer
+            if (comboboxfrom.Text == "kilometer" && comboboxto.Text == "inch")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / (2.54/100000)).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "inch" && comboboxto.Text == "kilometer")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 2.54/100000).ToString("0.00000000");
+            }
+            // inch and meter
+            if (comboboxfrom.Text == "meter" && comboboxto.Text == "inch")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / (0.0254)).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "inch" && comboboxto.Text == "meter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 0.0254).ToString("0.00000000");
+            }
+            // feet and meter
+            if (comboboxfrom.Text == "meter" && comboboxto.Text == "feet")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / (0.3048)).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "feet" && comboboxto.Text == "meter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 0.3048).ToString("0.00000000");
+            }
+            // feet and kilometer
+            if (comboboxfrom.Text == "kilometer" && comboboxto.Text == "feet")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / (0.0003048)).ToString("0.0000000000");
+            }
+            if (comboboxfrom.Text == "feet" && comboboxto.Text == "kilometer")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 0.0003048).ToString("0.0000000000");
+            }
+            // feet and centimeter
+            if (comboboxfrom.Text == "centimeter" && comboboxto.Text == "feet")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / (30.48)).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "feet" && comboboxto.Text == "centimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 30.48).ToString("0.00000000");
+            }
+            // feet and millimeter
+            if (comboboxfrom.Text == "millimeter" && comboboxto.Text == "feet")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / (304.8)).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "feet" && comboboxto.Text == "millimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 304.8).ToString("0.00000000");
+            }
+            // feet and inch
+            if (comboboxfrom.Text == "inch" && comboboxto.Text == "feet")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / (12)).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "feet" && comboboxto.Text == "inch")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 12).ToString("0.00000000");
+            }
+
+            // Conversion for Area   sq millimeter and sq meter
+            if (comboboxfrom.Text == "square millimeter" && comboboxto.Text == "square meter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 1000000).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "square meter" && comboboxto.Text == "square millimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 1000000).ToString("0.00000000");
+            }
+            // sq centimeter and sq meter
+            if (comboboxfrom.Text == "square centimeter" && comboboxto.Text == "square meter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 10000).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "square meter" && comboboxto.Text == "square centimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 10000).ToString("0.00000000");
+            }
+            // sq centimeter and sq millimeter
+            if (comboboxfrom.Text == "square centimeter" && comboboxto.Text == "square millimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 100).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "square millimeter" && comboboxto.Text == "square centimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 100).ToString("0.00000000");
+            }
+
+            // conversion for Volume  cubic centimeter and cubic millimeter
+            if (comboboxfrom.Text == "cubic centimeter" && comboboxto.Text == "cubic millimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 1000).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "cubic millimeter" && comboboxto.Text == "cubic centimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 1000).ToString("0.00000000");
+            }
+            // cubic centimeter and cubic meter
+            if (comboboxfrom.Text == "cubic centimeter" && comboboxto.Text == "cubic meter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 1000000).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "cubic meter" && comboboxto.Text == "cubic centimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 1000000).ToString("0.00000000");
+            }
+            //  cubic millimeter and cubic meter
+            if (comboboxfrom.Text == "cubic millimeter" && comboboxto.Text == "cubic meter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) / 1000000000).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "cubic meter" && comboboxto.Text == "cubic millimeter")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) * 1000000000).ToString("0.00000000");
+            }
+            // Conversion for Temperature  celsius and fahrenheit
+            if (comboboxfrom.Text == "degree Celsius" && comboboxto.Text == "degree fahrenheit")
+            {
+                textBoxto.Text = (((Convert.ToDouble(textBoxfrom.Text)) * 180/100) + 32).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "degree fahrenheit" && comboboxto.Text == "degree Celsius")
+            {
+                textBoxto.Text = (((Convert.ToDouble(textBoxfrom.Text)) -32)*100/180).ToString("0.00000000");
+            }
+            //celsius and kelvin
+            if (comboboxfrom.Text == "degree Celsius" && comboboxto.Text == "kelvin")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) +273.15).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "kelvin" && comboboxto.Text == "degree Celsius")
+            {
+                textBoxto.Text = (Convert.ToDouble(textBoxfrom.Text) - 273.15).ToString("0.00000000");
+            }
+            //kelvin and fahrenheit
+            if (comboboxfrom.Text == "kelvin" && comboboxto.Text == "degree fahrenheit")
+            {
+                textBoxto.Text = (((Convert.ToDouble(textBoxfrom.Text))-273.15)*180/100 +32).ToString("0.00000000");
+            }
+            if (comboboxfrom.Text == "degree fahrenheit" && comboboxto.Text == "kelvin")
+            {
+                textBoxto.Text = (((Convert.ToDouble(textBoxfrom.Text))-32)*100/180+273.15).ToString("0.00000000");
+            }
+
+
+        }
+
+        private void btnarea_Click(object sender, EventArgs e)
+        {
+            lblcaption.Text = "Conversion for " + btnarea.Text;
+            btntemperature.BackColor = Color.Black;
+            btnarea.BackColor = Color.LightSalmon;
+            btnvolume.BackColor = Color.Black;
+            btnlength.BackColor = Color.Black;
+            comboboxfrom.Items.Clear(); comboboxto.Items.Clear();
+            textBoxfrom.Text = "0"; textBoxto.Text = "0";
+            comboboxfrom.Items.Add("square meter"); comboboxto.Items.Add("square meter");
+            comboboxfrom.Items.Add("square centimeter"); comboboxto.Items.Add("square centimeter");
+            comboboxfrom.Items.Add("square millimeter"); comboboxto.Items.Add("square millimeter");
+            //comboboxfrom.Items.Add("Bigha"); comboboxto.Items.Add("Bigha");
+            //comboboxfrom.Items.Add("Kattha"); comboboxto.Items.Add("Kattha");
+        }
+
+        private void btntemperature_Click(object sender, EventArgs e)
+        {
+            lblcaption.Text = "Conversion for " + btntemperature.Text;
+            btntemperature.BackColor = Color.LightSalmon;
+            btnarea.BackColor = Color.Black;
+            btnvolume.BackColor = Color.Black;
+            btnlength.BackColor = Color.Black;
+            comboboxfrom.Items.Clear(); comboboxto.Items.Clear();
+            textBoxfrom.Text = "0"; textBoxto.Text = "0";
+            comboboxfrom.Items.Add("degree fahrenheit"); comboboxto.Items.Add("degree fahrenheit");
+            comboboxfrom.Items.Add("degree Celsius"); comboboxto.Items.Add("degree Celsius");
+            comboboxfrom.Items.Add("kelvin"); comboboxto.Items.Add("kelvin");
+        }
+
+        private void btnvolume_Click(object sender, EventArgs e)
+        {
+            lblcaption.Text = "Conversion for " + btnvolume.Text;
+            btntemperature.BackColor = Color.Black;
+            btnarea.BackColor = Color.Black;
+            btnvolume.BackColor = Color.LightSalmon;
+            btnlength.BackColor = Color.Black;
+            comboboxfrom.Items.Clear(); comboboxto.Items.Clear();
+            textBoxfrom.Text = "0"; textBoxto.Text = "0";
+            comboboxfrom.Items.Add("cubic meter"); comboboxto.Items.Add("cubic meter");
+            comboboxfrom.Items.Add("cubic centimeter"); comboboxto.Items.Add("cubic centimeter");
+            comboboxfrom.Items.Add("cubic millimeter"); comboboxto.Items.Add("cubic millimeter");
+        }
+
+        private void btnabout_Click(object sender, EventArgs e)
+        {
+
+            frmabout f = new frmabout();
+            f.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void mainheadpanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            checkmouse = 1;
+            MvalX = e.X;
+            MvalY = e.Y;
+        }
+
+        private void mainheadpanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(checkmouse==1)
+            {
+                this.SetDesktopLocation(MousePosition.X - MvalX, MousePosition.Y - MvalY);
+            }
+        }
+
+        private void mainheadpanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            checkmouse = 0;
+        }
+    }
+}

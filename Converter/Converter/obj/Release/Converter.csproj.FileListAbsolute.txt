@@ -1,0 +1,9 @@
+G:\AY\VS_2017\C#\Converter\Converter\bin\Release\Converter.exe.config
+G:\AY\VS_2017\C#\Converter\Converter\bin\Release\Converter.exe
+G:\AY\VS_2017\C#\Converter\Converter\bin\Release\Converter.pdb
+G:\AY\VS_2017\C#\Converter\Converter\obj\Release\WindowsFormsApp1.frmabout.resources
+G:\AY\VS_2017\C#\Converter\Converter\obj\Release\WindowsFormsApp1.converter.resources
+G:\AY\VS_2017\C#\Converter\Converter\obj\Release\WindowsFormsApp1.Properties.Resources.resources
+G:\AY\VS_2017\C#\Converter\Converter\obj\Release\Converter.csproj.GenerateResource.Cache
+G:\AY\VS_2017\C#\Converter\Converter\obj\Release\Converter.exe
+G:\AY\VS_2017\C#\Converter\Converter\obj\Release\Converter.pdb
